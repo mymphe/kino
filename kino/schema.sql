@@ -1,0 +1,26 @@
+DROP TABLE IF EXISTS users;
+DROP TABLE IF EXISTS reviews;
+DROP TRIGGER IF EXISTS update_updated;
+
+
+CREATE TABLE users (
+  id TEXT PRIMARY KEY,
+  username TEXT UNIQUE NOT NULL,
+  email TEXT UNIQUE NOT NULL,
+  hash TEXT NOT NULL
+);
+
+CREATE TABLE reviews (
+  id TEXT PRIMARY KEY,
+  user_id TEXT NOT NULL,
+  created TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  updated TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  title TEXT NOT NULL,
+  body TEXT NOT NULL,
+  FOREIGN KEY (user_id) REFERENCES user (id)
+);
+
+CREATE TRIGGER update_updated UPDATE OF title, body ON reviews 
+  BEGIN
+    UPDATE reviews SET updated = CURRENT_TIMESTAMP WHERE id = id;
+  END;
