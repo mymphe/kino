@@ -1,0 +1,4 @@
+include kino/schema.sql
+graft kino/static
+graft kino/templates
+global-exclude *.pyc
