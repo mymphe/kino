@@ -1,0 +1,25 @@
+{% extends 'base.html' %} {% block header %}
+<h1>{% block title %}Reviews{% endblock %}</h1>
+{% if g.user %}
+<a class="action" href="{{ url_for('review.create') }}">New</a>
+{% endif %} {% endblock %} {% block content %} {% for review in reviews %}
+<article class="post">
+  <header>
+    <div>
+      <h1>{{ review['title'] }}</h1>
+      <div class="about">
+        by {{ review['username'] }} on {{ review['created'].strftime('%Y-%m-%d')
+        }}
+      </div>
+    </div>
+    {% if g.user['id'] == review['user_id'] %}
+    <a class="action" href="{{ url_for('review.update', id=review['id']) }}"
+      >Edit</a
+    >
+    {% endif %}
+  </header>
+  <p class="body">{{ review['body'] }}</p>
+</article>
+{% if not loop.last %}
+<hr />
+{% endif %} {% endfor %} {% endblock %}
