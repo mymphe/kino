@@ -51,7 +51,7 @@ def create():
 def get_review(id, check_author=True):
     review = get_db().execute(
         'SELECT r.id, title, body, created, user_id, username'
-        ' FROM review r JOIN user u ON r.user_id = u.id'
+        ' FROM reviews r JOIN users u ON r.user_id = u.id'
         ' WHERE r.id = ?',
         (id,)
     ).fetchone()
