@@ -4,6 +4,12 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Monoton&family=Poppins&display=swap"
+      rel="stylesheet"
+    />
     <link
       rel="stylesheet"
       href="{{ url_for('static', filename='reset.css') }}"
@@ -16,10 +22,11 @@
   </head>
   <body>
     <header>
-      <h1>Kino</h1>
+      <a id="logo" href="{{ url_for('index') }}">KIN<span id="letter-o">O</span></a>
       <nav>
-        <ul>
+        <ul id="menu">
           {% if g.user %}
+          <li><a href="{{ url_for('review.create') }}">Write a review</a></li>
           <li><a>{{ g.user['username'] }}</a></li>
           <li><a href="{{ url_for('auth.logout') }}">Log Out</a></li>
           {% else %}

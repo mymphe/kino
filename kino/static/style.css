@@ -1,0 +1,115 @@
+/*
+
+  VARIABLES
+
+*/
+
+:root {
+  --logo-font-family: Monoton, Arial, Helvetica, sans-serif;
+  --sans-serif-font-family: Poppins, Arial, Helvetica, sans-serif;
+  --text-primary-color-light-theme: black;
+  --text-secondary-color-light-theme: #363636;
+  --accent-color-light-theme: seagreen;
+  --bg-color-light-theme: white;
+}
+
+/*
+
+  GLOBALS
+
+*/
+
+html {
+  font-size: 16px;
+  font-family: var(--sans-serif-font-family);
+  color: var(--text-primary-color-light-theme);
+  background-color: var(--bg-color-light-theme);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: bolder;
+}
+
+h1 {
+  font-size: 2rem;
+}
+
+h2 {
+  font-size: 1.5rem;
+}
+
+h3 {
+  font-size: 1.17rem;
+}
+
+h4 {
+  font-size: 1rem;
+}
+
+h5 {
+  font-size: 0.83rem;
+}
+
+h6 {
+  font-size: 0.67rem;
+}
+
+/*
+
+  HEADER
+
+*/
+
+header,
+main,
+footer {
+  padding: 1rem 20vw;
+}
+
+header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#logo {
+  font-size: 3rem;
+  font-family: var(--logo-font-family);
+  font-weight: normal;
+  color: var(--text-primary-color-light-theme);
+  text-decoration: none;
+}
+
+#letter-o {
+  font-size: 4rem;
+}
+
+#menu {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+#menu li {
+  margin: 1rem;
+}
+
+/*
+
+  MEDIA QUERIES
+
+*/
+
+@media (max-width: 720px) {
+  header,
+  main,
+  footer {
+    padding: 1rem;
+  }
+}
