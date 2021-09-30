@@ -1,25 +1,45 @@
 <!DOCTYPE html>
-<title>{% block title %}{% endblock %} - Kino</title>
-<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
-<nav>
-  <h1>Kino</h1>
-  <ul>
-    {% if g.user %}
-
-    <li><span>{{ g.user['username'] }}</span></li>
-    <li><a href="{{ url_for('auth.logout') }}">Log Out</a></li>
-
-    {% else %}
-
-    <li><a href="{{ url_for('auth.register') }}">Register</a></li>
-    <li><a href="{{ url_for('auth.login') }}">Log In</a></li>
-    {% endif %}
-  </ul>
-</nav>
-<section class="content">
-  <header>{% block header %}{% endblock %}</header>
-
-  {% for message in get_flashed_messages() %}
-  <div class="flash">{{ message }}</div>
-  {% endfor %} {% block content %} {% endblock %}
-</section>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='reset.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+    <title>{% block title %}{% endblock %} - Kino</title>
+  </head>
+  <body>
+    <header>
+      <h1>Kino</h1>
+      <nav>
+        <ul>
+          {% if g.user %}
+          <li><a>{{ g.user['username'] }}</a></li>
+          <li><a href="{{ url_for('auth.logout') }}">Log Out</a></li>
+          {% else %}
+          <li><a href="{{ url_for('auth.register') }}">Register</a></li>
+          <li><a href="{{ url_for('auth.login') }}">Log In</a></li>
+          {% endif %}
+        </ul>
+      </nav>
+    </header>
+    <!-- role="main" for Internet Explorer does not support main tag -->
+    <main role="main">
+      {% for message in get_flashed_messages() %}
+      <p>{{ message }}</p>
+      {% endfor %}
+      <section>
+        {% block header %} {% endblock %}
+        <br />
+        {% block content %} {% endblock %}
+      </section>
+    </main>
+    <footer>Kino 2021</footer>
+  </body>
+</html>
