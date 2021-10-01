@@ -65,6 +65,12 @@ def get_review(id, check_author=True):
     return review
 
 
+@bp.route('/<id>')
+def read(id):
+    review = get_review(id, False)
+    return render_template('review/read.html', review=review)
+
+
 @bp.route('/<id>/update', methods=('GET', 'POST'))
 @login_required
 def update(id):
