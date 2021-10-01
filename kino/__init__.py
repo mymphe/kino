@@ -24,15 +24,15 @@ def create_app(test_config=None):
     except OSError:
         pass
 
-    from . import db
+    from . import db, auth, review, user
     db.init_app(app)
 
-    from . import auth
     app.register_blueprint(auth.bp)
 
-    from . import review
     app.register_blueprint(review.bp)
     app.add_url_rule('/', endpoint='index')
+
+    app.register_blueprint(user.bp)
 
     # for testing
     @app.route('/hello')
