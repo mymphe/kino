@@ -86,10 +86,6 @@ header {
   text-decoration: none;
 }
 
-#letter-o {
-  font-size: 4rem;
-}
-
 #menu {
   display: flex;
   flex-direction: row;
