@@ -1,15 +1,15 @@
 {% extends 'base.html' %}
 
-{% block header %}
-    <h2>
-        {% block title %}
-            {{ review['title'] }}
-        {% endblock %}
-    </h2>
-{% endblock %}
-
 {% block content %}
+    <article>
+        <h1>
+            {% block title %}
+                {{ review['title'] }}
+            {% endblock %}
+        </h1>
 
-    <article>{{ review['body'] }}</article>
+
+        {{ review['body'] }}
+    </article>
     
 {% endblock %}

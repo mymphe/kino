@@ -1,52 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Monoton&family=Poppins&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      rel="stylesheet"
-      href="{{ url_for('static', filename='reset.css') }}"
-    />
-    <link
-      rel="stylesheet"
-      href="{{ url_for('static', filename='style.css') }}"
-    />
-    <title>{% block title %}{% endblock %} - Kino</title>
-  </head>
-  <body>
-    <header>
-      <a id="logo" href="{{ url_for('index') }}">KINO</a>
-      <nav>
-        <ul id="menu">
-          {% if g.user %}
-          <li><a href="{{ url_for('review.create') }}">Write a review</a></li>
-          <li><a href="{{ url_for('user.profile', username=g.user['username']) }}">{{ g.user['username'] }}</a></li>
-          <li><a href="{{ url_for('auth.logout') }}">Log Out</a></li>
-          {% else %}
-          <li><a href="{{ url_for('auth.register') }}">Register</a></li>
-          <li><a href="{{ url_for('auth.login') }}">Log In</a></li>
-          {% endif %}
-        </ul>
-      </nav>
-    </header>
-    <!-- role="main" for Internet Explorer does not support main tag -->
-    <main role="main">
-      {% for message in get_flashed_messages() %}
-      <p>{{ message }}</p>
-      {% endfor %}
-      <section>
-        {% block header %} {% endblock %}
-        <br />
-        {% block content %} {% endblock %}
-      </section>
-    </main>
-    <footer>Kino 2021</footer>
-  </body>
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Monoton&family=Poppins&display=swap"
+            rel="stylesheet"
+        />
+        <link
+            rel="stylesheet"
+            href="{{ url_for('static', filename='reset.css') }}"
+        />
+        <link
+            rel="stylesheet"
+            href="{{ url_for('static', filename='style.css') }}"
+        />
+        <title>{% block title %}{% endblock %}</title>
+    </head>
+    <body>
+        <header>
+            <a id="logo" href="{{ url_for('index') }}">KINO</a>
+            <nav>
+                <ul id="menu">
+                    {% if g.user %}
+                        <li><a href="{{ url_for('review.create') }}">Write a review</a></li>
+                        <li><a href="{{ url_for('user.profile', username=g.user['username']) }}">{{ g.user['username'] }}</a></li>
+                        <li><a href="{{ url_for('auth.logout') }}">Log Out</a></li>
+                    {% else %}
+                        <li><a href="{{ url_for('auth.register') }}">Register</a></li>
+                        <li><a href="{{ url_for('auth.login') }}">Log In</a></li>
+                    {% endif %}
+                </ul>
+            </nav>
+        </header>
+        <!-- role="main" for Internet Explorer does not support main tag -->
+        <main role="main">
+            {% for message in get_flashed_messages() %}
+                <p>{{ message }}</p>
+            {% endfor %}
+            
+            <section>
+                {% block content %} {% endblock %}
+            </section>
+        </main>
+        <footer>Kino 2021</footer>
+    </body>
 </html>

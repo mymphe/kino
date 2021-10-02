@@ -1,22 +1,22 @@
 {% extends 'base.html' %}
 
+{% block title %}
+    KINO
+{% endblock %}
+
 {% block content %}
 
     {% for review in reviews %}
 
-        <article>
-            <div>
-                <a href="{{ url_for('review.read', id=review['id']) }}"><h3>{{ review['title'] }}</h3></a>
-                <h4>by {{ review['username'] }} on {{ review['created'].strftime('%Y-%m-%d') }}</h4>
+        <hr />
+        <div>
+            <h2><a href="{{ url_for('review.read', id=review['id']) }}">{{ review['title'] }}</a></h2>  
+            <p>by {{ review['username'] }} on {{ review['created'].strftime('%Y-%m-%d') }}</p>
                 {% if g.user['id'] == review['user_id'] %}
                     <a class="action" href="{{ url_for('review.update', id=review['id']) }}">Edit</a>
                 {% endif %}
-            </div>
             <p>{{ review['body'] }}</p>
-        </article>
-        {% if not loop.last %}
-            <hr />
-        {% endif %}
+        </div>
     {% endfor %}
 
 {% endblock %}

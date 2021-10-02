@@ -20,7 +20,7 @@
 */
 
 html {
-  font-size: 16px;
+  font-size: 20px;
   font-family: var(--sans-serif-font-family);
   color: var(--text-primary-color-light-theme);
   background-color: var(--bg-color-light-theme);
@@ -59,6 +59,7 @@ h6 {
   font-size: 0.67rem;
 }
 
+
 /*
 
   HEADER
@@ -94,6 +95,21 @@ header {
 
 #menu li {
   margin: 1rem;
+}
+
+
+/*
+
+  ARTICLE
+
+*/
+
+article {
+  margin-bottom: 3rem;
+}
+
+article h1 {
+  margin: 1rem 0 2rem;
 }
 
 /*
